@@ -1,7 +1,5 @@
 
-# SL-Three-Wheeler-Tracking-api
-
-# Tuk-Tuk Tracking API
+#  SL-Tuk-Tuk Tracking API
 
 Student ID: COBSCCOMP24.2P-023
 
