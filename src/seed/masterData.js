@@ -46,36 +46,7 @@ const districts = [
   { code: "KE", name: "Kegalle", provinceCode: "SGP" }
 ];
 
-const stations = [
-  { code: "CO-01", name: "Colombo Fort", districtCode: "CO" },
-  { code: "CO-02", name: "Pettah", districtCode: "CO" },
-  { code: "CO-03", name: "Borella", districtCode: "CO" },
-
-  { code: "GA-01", name: "Negombo", districtCode: "GA" },
-  { code: "GA-02", name: "Kadawatha", districtCode: "GA" },
-
-  { code: "KL-01", name: "Kalutara North", districtCode: "KL" },
-  { code: "KL-02", name: "Panadura", districtCode: "KL" },
-
-  { code: "KY-01", name: "Kandy", districtCode: "KY" },
-  { code: "KY-02", name: "Katugastota", districtCode: "KY" },
-
-  { code: "GL-01", name: "Galle", districtCode: "GL" },
-  { code: "GL-02", name: "Hikkaduwa", districtCode: "GL" },
-
-  { code: "HB-01", name: "Tangalle", districtCode: "HB" },
-  { code: "HB-02", name: "Hambantota", districtCode: "HB" },
-
-  { code: "TR-01", name: "Trincomalee", districtCode: "TR" },
-  { code: "BT-01", name: "Batticaloa", districtCode: "BT" },
-  { code: "AP-01", name: "Ampara", districtCode: "AP" },
-
-  { code: "KG-01", name: "Kurunegala", districtCode: "KG" },
-  { code: "PT-01", name: "Puttalam", districtCode: "PT" },
-
-  { code: "AN-01", name: "Anuradhapura", districtCode: "AN" },
-  { code: "PO-01", name: "Polonnaruwa", districtCode: "PO" }
-];
+v
 
 // approximate center coords for each district
 const districtCoords = {
