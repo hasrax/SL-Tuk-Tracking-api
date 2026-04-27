@@ -46,9 +46,42 @@ const districts = [
   { code: "KE", name: "Kegalle", provinceCode: "SGP" }
 ];
 
-v
+const stations = [
+  { code: "CO-01", name: "Colombo Fort", districtCode: "CO" },
+  { code: "GA-01", name: "Negombo", districtCode: "GA" },
+  { code: "KL-01", name: "Kalutara North", districtCode: "KL" },
 
-// approximate center coords for each district
+  { code: "KY-01", name: "Kandy", districtCode: "KY" },
+  { code: "MT-01", name: "Matale", districtCode: "MT" },
+  { code: "NW-01", name: "Nuwara Eliya", districtCode: "NW" },
+
+  { code: "GL-01", name: "Galle", districtCode: "GL" },
+  { code: "MTB-01", name: "Matara", districtCode: "MTB" },
+  { code: "HB-01", name: "Hambantota", districtCode: "HB" },
+
+  { code: "JN-01", name: "Jaffna", districtCode: "JN" },
+  { code: "KLN-01", name: "Kilinochchi", districtCode: "KLN" },
+  { code: "MN-01", name: "Mannar", districtCode: "MN" },
+  { code: "MV-01", name: "Mullaitivu", districtCode: "MV" },
+  { code: "VP-01", name: "Vavuniya", districtCode: "VP" },
+
+  { code: "TR-01", name: "Trincomalee", districtCode: "TR" },
+  { code: "BT-01", name: "Batticaloa", districtCode: "BT" },
+  { code: "AP-01", name: "Ampara", districtCode: "AP" },
+
+  { code: "KG-01", name: "Kurunegala", districtCode: "KG" },
+  { code: "PT-01", name: "Puttalam", districtCode: "PT" },
+
+  { code: "AN-01", name: "Anuradhapura", districtCode: "AN" },
+  { code: "PO-01", name: "Polonnaruwa", districtCode: "PO" },
+
+  { code: "BD-01", name: "Badulla", districtCode: "BD" },
+  { code: "MNK-01", name: "Monaragala", districtCode: "MNK" },
+
+  { code: "RT-01", name: "Ratnapura", districtCode: "RT" },
+  { code: "KE-01", name: "Kegalle", districtCode: "KE" }
+];
+
 const districtCoords = {
   CO: { lat: 6.9271, lng: 79.8612 },
   GA: { lat: 7.0840, lng: 79.9945 },
