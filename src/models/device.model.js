@@ -7,7 +7,8 @@ const deviceSchema = new mongoose.Schema(
 
 
     isActive: { type: Boolean, default: true },
-    lastSeenAt: { type: Date }
+    lastSeenAt: { type: Date },
+    secretHash: { type: String, required: true }
   },
   { timestamps: true }
 );
