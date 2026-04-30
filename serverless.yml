@@ -1,0 +1,16 @@
+service: tuktuk-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  stage: dev
+  environment:
+    NODE_ENV: production
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
