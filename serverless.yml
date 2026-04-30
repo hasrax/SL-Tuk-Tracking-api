@@ -6,7 +6,10 @@ provider:
   region: ap-south-1
   stage: dev
   environment:
-    NODE_ENV: production
+    NODE_ENV: ${param:NODE_ENV, "production"}
+    MONGODB_URI: ${param:MONGODB_URI, ""}
+    JWT_SECRET: ${param:JWT_SECRET, ""}
+    JWT_EXPIRES_IN: ${param:JWT_EXPIRES_IN, "1d"}
 
 functions:
   api:
