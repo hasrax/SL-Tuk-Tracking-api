@@ -8,7 +8,9 @@ router.use("/docs", swaggerUi.serve);
 const serveSwagger = (req, res, next) => {
   try {
     const swaggerSpec = require("../config/swagger");
-    return swaggerUi.setup(swaggerSpec)(req, res, next);
+    return swaggerUi.setup(swaggerSpec, {
+      customSiteTitle: "TukTuk Tracking API Docs",
+    })(req, res, next);
   } catch (err) {
     console.error("Swagger generation failed:", err);
     console.error(err.stack);
@@ -18,6 +20,7 @@ const serveSwagger = (req, res, next) => {
     });
   }
 };
+
 
 router.get("/docs", serveSwagger);
 router.get("/docs/", serveSwagger);
