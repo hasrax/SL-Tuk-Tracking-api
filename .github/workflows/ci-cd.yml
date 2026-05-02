@@ -25,8 +25,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Install Serverless
-        run: npm install -g serverless
+      - name: Install Serverless (v3)
+        run: npm install -g serverless@3
 
       - name: Deploy (dev)
         if: github.ref == 'refs/heads/develop'
