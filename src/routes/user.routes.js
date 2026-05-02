@@ -1,3 +1,101 @@
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Create officer
+ *     tags: [User]
+ *     security: [{ bearerAuth: [] }]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [fullName, email, password, role]
+ *             properties:
+ *               fullName: { type: string }
+ *               email: { type: string }
+ *               password: { type: string }
+ *               role: { type: string }
+ *               province: { type: string }
+ *               district: { type: string }
+ *               station: { type: string }
+ *     responses:
+ *       201: { description: Created }
+ */
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: List officers
+ *     tags: [User]
+ *     security: [{ bearerAuth: [] }]
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Get officer by ID
+ *     tags: [User]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   put:
+ *     summary: Update officer
+ *     tags: [User]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               fullName: { type: string }
+ *               role: { type: string }
+ *               province: { type: string }
+ *               district: { type: string }
+ *               station: { type: string }
+ *               isActive: { type: boolean }
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   delete:
+ *     summary: Delete officer
+ *     tags: [User]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200: { description: Deleted }
+ */
+
 const express = require("express");
 const { body, param } = require("express-validator");
 const { create, list, getById, update, remove } = require("../controllers/user.controller");
