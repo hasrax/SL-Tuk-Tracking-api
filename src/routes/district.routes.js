@@ -1,3 +1,98 @@
+/**
+ * @swagger
+ * /api/districts:
+ *   post:
+ *     summary: Create district
+ *     tags: [District]
+ *     security: [{ bearerAuth: [] }]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [code, name, province]
+ *             properties:
+ *               code: { type: string }
+ *               name: { type: string }
+ *               province: { type: string }
+ *     responses:
+ *       201: { description: Created }
+ */
+
+/**
+ * @swagger
+ * /api/districts:
+ *   get:
+ *     summary: List districts
+ *     tags: [District]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: query
+ *         name: province ID
+ *         schema: { type: string }
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/districts/{id}:
+ *   get:
+ *     summary: Get district by ID
+ *     tags: [District]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/districts/{id}:
+ *   put:
+ *     summary: Update district
+ *     tags: [District]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               code: { type: string }
+ *               name: { type: string }
+ *               province: { type: string }
+ *     responses:
+ *       200: { description: OK }
+ */
+
+/**
+ * @swagger
+ * /api/districts/{id}:
+ *   delete:
+ *     summary: Delete district
+ *     tags: [District]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200: { description: Deleted }
+ */
+
 const express = require("express");
 const { body, param, query } = require("express-validator");
 const { create, list, getById, update, remove } = require("../controllers/district.controller");
