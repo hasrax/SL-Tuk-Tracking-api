@@ -1,0 +1,57 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  lint-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Install Serverless
+        run: npm install -g serverless
+
+      - name: Deploy (dev)
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          serverless deploy --stage dev \
+            --param="NODE_ENV=development" \
+            --param="MONGODB_URI=${{ secrets.MONGODB_URI }}" \
+            --param="JWT_SECRET=${{ secrets.JWT_SECRET }}" \
+            --param="JWT_EXPIRES_IN=${{ secrets.JWT_EXPIRES_IN }}" \
+            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL }}"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy (prod)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          serverless deploy --stage prod \
+            --param="NODE_ENV=production" \
+            --param="MONGODB_URI=${{ secrets.MONGODB_URI }}" \
+            --param="JWT_SECRET=${{ secrets.JWT_SECRET }}" \
+            --param="JWT_EXPIRES_IN=${{ secrets.JWT_EXPIRES_IN }}" \
+            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL }}"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
