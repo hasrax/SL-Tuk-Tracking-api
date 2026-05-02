@@ -9,8 +9,8 @@ const options = {
       description: "API documentation for TukTuk tracking system"
     },
     servers: [
-  { url: process.env.SWAGGER_SERVER_URL || "http://localhost:4000/api", description: "API" }
-   ],
+  { url: process.env.SWAGGER_SERVER_URL || "http://localhost:4000", description: "API" }
+],
     components: {
       securitySchemes: {
         bearerAuth: {
