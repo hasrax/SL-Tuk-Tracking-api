@@ -5,6 +5,33 @@ const { validate } = require("../middleware/validate");
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /api/tuktuks:
+ *   get:
+ *     summary: List tuktuks
+ *     tags: [TukTuk]
+ *     parameters:
+ *       - in: query
+ *         name: province
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: district
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: station
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: isActive
+ *         schema:
+ *           type: boolean
+ *     responses:
+ *       200:
+ *         description: List of tuktuks
+ */
 router.get(
   "/tuktuks",
   [
@@ -17,6 +44,23 @@ router.get(
   list
 );
 
+
+/**
+ * @swagger
+ * /api/tuktuks/{id}:
+ *   get:
+ *     summary: Get tuktuk by ID
+ *     tags: [TukTuk]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: TukTuk details
+ */
 router.get(
   "/tuktuks/:id",
   [param("id").isMongoId(), validate],

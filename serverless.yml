@@ -10,6 +10,7 @@ provider:
     MONGODB_URI: ${param:MONGODB_URI, ""}
     JWT_SECRET: ${param:JWT_SECRET, ""}
     JWT_EXPIRES_IN: ${param:JWT_EXPIRES_IN, "1d"}
+    SWAGGER_SERVER_URL: ${param:SWAGGER_SERVER_URL, ""}
 
 functions:
   api:
