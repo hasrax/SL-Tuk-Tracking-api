@@ -9,8 +9,8 @@ const options = {
       description: "API documentation for TukTuk tracking system"
     },
     servers: [
-      { url: "http://localhost:4000/api", description: "Local" }
-    ],
+  { url: process.env.SWAGGER_SERVER_URL || "http://localhost:4000/api", description: "API" }
+   ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -22,7 +22,7 @@ const options = {
     },
     security: [{ bearerAuth: [] }]
   },
-  apis: ["./src/routes/*.js"]
+  apis: [__dirname + "/../routes/*.js"]
 };
 
 module.exports = swaggerJSDoc(options);

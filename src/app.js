@@ -20,12 +20,19 @@ if (process.env.NODE_ENV !== "test") {
   app.use(morgan("dev"));
 }
 
+app.set("trust proxy", 1); 
+
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 200
+    max: 200,
+    skip: (req) => req.path.startsWith("/api/docs")
   })
 );
+
+app.get("/", (req, res) => {
+  res.json({ name: "TukTuk Tracking API", docs: "/api/docs", health: "/api/health" });
+});
 
 app.use("/api", routes);
 

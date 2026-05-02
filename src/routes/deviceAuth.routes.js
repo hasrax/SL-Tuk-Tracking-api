@@ -5,6 +5,32 @@ const { validate } = require("../middleware/validate");
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /api/devices/auth/login:
+ *   post:
+ *     summary: Device login
+ *     tags: [Device Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [deviceId, deviceSecret]
+ *             properties:
+ *               deviceId:
+ *                 type: string
+ *               deviceSecret:
+ *                 type: string
+ *                 minLength: 6
+ *     responses:
+ *       200:
+ *         description: Login success
+ *       400:
+ *         description: Validation error
+ */
+
 router.post(
   "/devices/auth/login",
   [
