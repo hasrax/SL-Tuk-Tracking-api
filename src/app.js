@@ -13,8 +13,39 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(compression());
-app.use(express.json({ limit: "1mb" }));
+app.use(express.json({ limit: "1mb", type: "*/*" }));
 app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+  const eventBody = req.apiGateway?.event?.body;
+  const hasEventBody = typeof eventBody === "string" && eventBody.length > 0;
+  const numericKeyObject =
+    req.body &&
+    typeof req.body === "object" &&
+    !Array.isArray(req.body) &&
+    Object.keys(req.body).every((key) => /^\d+$/.test(key));
+
+  if (!req.body || Buffer.isBuffer(req.body) || numericKeyObject) {
+    if (hasEventBody) {
+      const raw = req.apiGateway.event.isBase64Encoded
+        ? Buffer.from(eventBody, "base64").toString("utf8")
+        : eventBody;
+      try {
+        req.body = JSON.parse(raw);
+      } catch (err) {
+        req.body = raw;
+      }
+    }
+  } else if (typeof req.body === "string" && req.body.trim().startsWith("{")) {
+    try {
+      req.body = JSON.parse(req.body);
+    } catch (err) {
+      return res.status(400).json({ message: "Invalid JSON body" });
+    }
+  }
+
+  next();
+});
 
 if (process.env.NODE_ENV !== "test") {
   app.use(morgan("dev"));
