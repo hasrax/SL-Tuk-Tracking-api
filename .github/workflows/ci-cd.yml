@@ -33,10 +33,10 @@ jobs:
         run: |
           serverless deploy --stage dev \
             --param="NODE_ENV=development" \
-            --param="MONGODB_URI=${{ secrets.MONGODB_URI }}" \
-            --param="JWT_SECRET=${{ secrets.JWT_SECRET }}" \
+            --param="MONGODB_URI=${{ secrets.MONGODB_URI_DEV }}" \
+            --param="JWT_SECRET=${{ secrets.JWT_SECRET_DEV }}" \
             --param="JWT_EXPIRES_IN=${{ secrets.JWT_EXPIRES_IN }}" \
-            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL }}"
+            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL_DEV }}"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -47,10 +47,10 @@ jobs:
         run: |
           serverless deploy --stage prod \
             --param="NODE_ENV=production" \
-            --param="MONGODB_URI=${{ secrets.MONGODB_URI }}" \
-            --param="JWT_SECRET=${{ secrets.JWT_SECRET }}" \
+            --param="MONGODB_URI=${{ secrets.MONGODB_URI_PROD }}" \
+            --param="JWT_SECRET=${{ secrets.JWT_SECRET_PROD }}" \
             --param="JWT_EXPIRES_IN=${{ secrets.JWT_EXPIRES_IN }}" \
-            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL }}"
+            --param="SWAGGER_SERVER_URL=${{ secrets.SWAGGER_SERVER_URL_PROD }}"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
